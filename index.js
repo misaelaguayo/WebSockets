@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 80;
+const WebSocketServer = require('ws');
 
 app.get('/', function(request, response){
   response.sendFile(__dirname + '/index.html');
@@ -9,8 +10,6 @@ app.get('/', function(request, response){
 app.listen(port, () => {
   console.log('Node.js web server running at port 80')
 })
-
-const WebSocketServer = require('ws');
 
 // create new websocket server
 const wss = new WebSocketServer.Server({ port: 8080 })
