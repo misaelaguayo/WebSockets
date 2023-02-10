@@ -1,7 +1,8 @@
-const express = require('express');
+import * as express from 'express';
+import * as WebSocketServer from 'ws';
+
 const app = express();
 const port = 80;
-const WebSocketServer = require('ws');
 
 app.get('/', function(request, response){
   response.sendFile(__dirname + '/index.html');
