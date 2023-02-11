@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as WebSocketServer from 'ws';
+import Player from './player';
 
 const app = express();
 const port = 80;
