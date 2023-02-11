@@ -1,6 +1,5 @@
-import * as express from 'express';
-import * as WebSocketServer from 'ws';
-import Player from './player';
+const express = require('express');
+const WebSocketServer = require('ws');
 
 const app = express();
 const port = 80;
