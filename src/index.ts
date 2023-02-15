@@ -1,11 +1,16 @@
-const express = require('express');
-const WebSocketServer = require('ws');
+import * as express from 'express';
+import * as WebSocketServer from 'ws';
+import * as path from 'node:path';
 
 const app = express();
 const port = 80;
 
+app.use(express.static('dist'));
+
+const landingPage = path.join(__dirname, '..', 'dist', 'index.html');
+
 app.get('/', function(request, response){
-  response.sendFile(__dirname + '/index.html');
+  response.sendFile(landingPage);
 });
 
 app.listen(port, () => {
