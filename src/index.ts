@@ -1,9 +1,12 @@
 import * as express from 'express';
-import * as WebSocketServer from 'ws';
 import * as path from 'node:path';
+import * as http from 'http';
+import { Server } from 'socket.io';
 
 const app = express();
 const port = 80;
+const server = http.createServer(app);
+const io = new Server(server);
 
 app.use(express.static('dist'));
 
@@ -13,27 +16,11 @@ app.get('/', function(request, response){
   response.sendFile(landingPage);
 });
 
-app.listen(port, () => {
+io.on('connection', (socket) => {
+  console.log('a user connected');
+})
+
+server.listen(port, () => {
   console.log('Node.js web server running at port 80')
 })
 
-// create new websocket server
-const wss = new WebSocketServer.Server({ port: 8080 })
-
-wss.on("connection", ws => {
-  console.log("new client connected");
-
-  // send message to client
-  ws.send('Welcome, you are connected');
-
-  // on message from client
-  ws.on("close", () => {
-    console.log("the client has connected");
-  });
-  
-  // handling client connection error
-  ws.onerror = function(){
-    console.log("Some error occurred")
-  } 
-});
-console.log("The websocket server is running on port 8080")

@@ -1,14 +1,8 @@
 import { Actor, CollisionType, Color, Engine, vec } from "excalibur";
+import { io } from 'socket.io-client';
 
-const ws = new WebSocket("ws://localhost:8080");
-ws.addEventListener("open", () => {
-  console.log("We are connected");
-  ws.send("How are you?");
-});
+const socket = io();
 
-ws.addEventListener("message", function (event) {
-  console.log(event.data);
-});
 // game.js
 
 // start-snippet{create-engine}
