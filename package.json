@@ -15,6 +15,7 @@
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
     "uuid": "^9.0.0",
+    "webpack-dev-server": "^4.11.1",
     "ws": "^8.12.0"
   },
   "devDependencies": {
@@ -25,8 +26,9 @@
     "webpack-cli": "^5.0.1"
   },
   "scripts": {
-    "start": "concurrently \"npm:server\" \"npm:watch-webpack\"",
+    "start": "concurrently \"npm:server\" \"npm:serve-webpack\"",
     "server": "ts-node ./src/index.ts",
-    "watch-webpack": "webpack --watch"
+    "watch-webpack": "webpack --watch",
+    "serve-webpack": "webpack serve"
   }
 }
