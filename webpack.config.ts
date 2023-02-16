@@ -1,7 +1,13 @@
 import * as path from 'path';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
 module.exports = {
   entry: './src/game/main.ts',
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'main'
+    }),
+  ],
   module: {
     rules: [
       {
@@ -18,5 +24,6 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
 };
