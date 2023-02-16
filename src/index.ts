@@ -18,9 +18,12 @@ app.get('/', function(request, response){
 
 io.on('connection', (socket) => {
   console.log('a user connected');
-})
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
 
 server.listen(port, () => {
   console.log('Node.js web server running at port 80')
-})
+});
 
