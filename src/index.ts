@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as path from 'node:path';
 import * as http from 'http';
 import { Server } from 'socket.io';
+import {v4 as uuidv4} from 'uuid';
 
 const app = express();
 const port = 80;
@@ -18,6 +19,7 @@ app.get('/', function(request, response){
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+  io.emit('player join', {player_id: uuidv4()});
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
