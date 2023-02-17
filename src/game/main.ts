@@ -1,5 +1,6 @@
 import { Actor, CollisionType, Color, Engine, vec } from "excalibur";
 import { io } from 'socket.io-client';
+import randomIntFromInterval from './random';
 
 const socket = io();
 
@@ -21,8 +22,8 @@ game.start();
 
 socket.on('player join', function({player_id}: {player_id: string}){
   const ball = new Actor({
-    x: 100,
-    y: 300,
+    x: randomIntFromInterval(0, 800),
+    y: randomIntFromInterval(0, 600),
     // Use a circle collider with radius 10
     radius: 10,
     // Set the color
