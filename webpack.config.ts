@@ -2,10 +2,10 @@ import * as path from 'path';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
 module.exports = {
-  entry: './src/game/main.ts',
+  entry: './src/game/main.tsx',
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'main'
+      template: 'src/index.html'
     }),
   ],
   module: {
