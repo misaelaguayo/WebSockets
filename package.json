@@ -30,7 +30,7 @@
     "webpack-cli": "^5.0.1"
   },
   "scripts": {
-    "start": "concurrently \"npm:server\" \"npm:watch-webpack\"",
+    "start": "concurrently \"npm:server\" \"npm:serve-webpack\"",
     "server": "ts-node ./src/index.ts",
     "watch-webpack": "webpack --watch",
     "serve-webpack": "webpack serve"
