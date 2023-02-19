@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { io } from 'socket.io-client'
+
+const socket = io();
+
 export default function Messages(): JSX.Element {
-  const [messages, setMessages] = useState(["message1", "message2"]);
-  const inputmessage = (document.getElementById('inputText') as HTMLInputElement).value;
+  const [messages, setMessages] = useState([]);
+
+  socket.on('chat message', (msg) => {
+    setMessages([...messages, msg]);
+  })
 
   function newMessage(): void {
-    if (inputmessage !== '') {
-      setMessages([...messages, inputmessage])
+    const inputTextElement = document.getElementById('inputText') as HTMLInputElement
+    const message = inputTextElement.value;
+    if (message !== '') {
+      socket.emit('chat message', message);
+
+      inputTextElement.value = '';
     }
   }
 
