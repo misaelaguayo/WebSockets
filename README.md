@@ -1,13 +1,12 @@
 # WebSockets
 
-A simple game which implements the web sockets protocol using sockets io
+A simple chatting system which implements websockets for realtime messaging
 
 ## installation
 
 - npm install
-- npx webpack
-- cp src/index.html dist/
 
 ## running
 
 - npm start
+- running on port 80 localhost
