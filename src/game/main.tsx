@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import Messages from './components/messages'
+import Messages from './components/messages';
 import './styles/App.css'
 
 const App = (): JSX.Element =>
